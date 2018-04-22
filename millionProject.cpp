@@ -19,8 +19,6 @@ int main()
 		int head = 0;
 		int tail = day - 1;
 		int discount = 0;
-		int maximum = -1;
-		int minimum = 10001;
 
 		//input
 		vector<int> price(day);
@@ -34,6 +32,9 @@ int main()
 		while(1)
 		{
 			if(head >= day) break;
+
+			int maximum = -1;
+			int minimum = 10001;
 
 			//initialize head, tail, maximum and minimum
 			for(int i = head; i <= day - 1; i++)
@@ -51,9 +52,13 @@ int main()
 			}
 
 			if(maximum == minimum) break;
-			if(head == tail) continue;
+			if(head == tail) 
+			{
+				head = tail + 1; 
+				continue;
+			}
 			
-			int select = head - tail;
+			int select = tail- head;
 			int price_count = 0;
 
 			for(int i = head; i < tail; i++)
@@ -61,7 +66,7 @@ int main()
 				price_count += price[i];
 			}
 
-			discount = discount + (select * price[tail] - price_count); 
+			discount = discount + (select * price[tail] - price_count);
 
 			//next head
 			head = tail + 1;
