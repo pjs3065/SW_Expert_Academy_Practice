@@ -18,7 +18,7 @@ int main()
 
 		int head = 0;
 		int tail = day - 1;
-		int discount = 0;
+		long long discount = 0;
 
 		//input
 		vector<int> price(day);
@@ -72,10 +72,10 @@ int main()
 			head = tail + 1;
 		}
 
-		int ans = discount;
+		long long ans = discount;
 
 		//output
-		cout << "#" << count++ << ' ' << ans << '\n';
+		printf("#%d %lld\n",count++,ans);
 	}
 
 return 0;
